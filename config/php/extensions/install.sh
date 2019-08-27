@@ -1,3 +1,10 @@
+### 
+# @Description: 
+ # @Author: Huang Mi
+ # @Date: 2019-08-25 21:27:38
+ # @LastEditTime: 2019-08-26 15:43:19
+ # @LastEditors: Huang Mi
+ ###
 #!/bin/sh
 
 echo
@@ -41,10 +48,10 @@ if [ -z "${EXTENSIONS##*,mysqli,*}" ]; then
 	docker-php-ext-install ${MC} mysqli
 fi
 
-if [ -z "${EXTENSIONS##*,mbstring,*}" ]; then
-    echo "---------- Install mbstring ----------"
-	docker-php-ext-install ${MC} mbstring
-fi
+# if [ -z "${EXTENSIONS##*,mbstring,*}" ]; then
+#     echo "---------- Install mbstring ----------"
+# 	docker-php-ext-install ${MC} mbstring
+# fi
 
 if [ -z "${EXTENSIONS##*,exif,*}" ]; then
     echo "---------- Install exif ----------"
@@ -184,11 +191,11 @@ if [ -z "${EXTENSIONS##*,xsl,*}" ]; then
 	docker-php-ext-install ${MC} xsl
 fi
 
-if [ -z "${EXTENSIONS##*,xmlrpc,*}" ]; then
-    echo "---------- Install xmlrpc ----------"
-	apk add --no-cache libxslt-dev
-	docker-php-ext-install ${MC} xmlrpc
-fi
+# if [ -z "${EXTENSIONS##*,xmlrpc,*}" ]; then
+#     echo "---------- Install xmlrpc ----------"
+# 	apk add --no-cache libxslt-dev
+# 	docker-php-ext-install ${MC} xmlrpc
+# fi
 
 if [ -z "${EXTENSIONS##*,wddx,*}" ]; then
     echo "---------- Install wddx ----------"

@@ -1,3 +1,10 @@
+### 
+# @Description: 
+ # @Author: Huang Mi
+ # @Date: 2019-08-26 11:33:35
+ # @LastEditTime: 2019-08-26 15:45:38
+ # @LastEditors: Huang Mi
+ ###
 #!/bin/sh
 
 echo
@@ -48,10 +55,13 @@ fi
 
 if [ -z "${EXTENSIONS##*,redis,*}" ]; then
     echo "---------- Install redis ----------"
-    mkdir redis \
-    && tar -xf redis-4.1.1.tgz -C redis --strip-components=1 \
-    && ( cd redis && phpize && ./configure && make ${MC} && make install ) \
-    && docker-php-ext-enable redis
+    pecl install redis
+    docker-php-ext-enable redis
+
+    # mkdir redis \
+    # && tar -xf redis-5.0.2.tgz -C redis --strip-components=1 \
+    # && ( cd redis && phpize && ./configure && make ${MC} && make install ) \
+    # && docker-php-ext-enable redis
 fi
 
 
@@ -74,10 +84,12 @@ fi
 
 if [ -z "${EXTENSIONS##*,swoole,*}" ]; then
     echo "---------- Install swoole ----------"
-    mkdir swoole \
-    && tar -xf swoole-4.4.3.tgz -C swoole --strip-components=1 \
-    && ( cd swoole && phpize && ./configure --enable-openssl && make ${MC} && make install ) \
-    && docker-php-ext-enable swoole
+    pecl install swoole
+    docker-php-ext-enable swoole
+    # mkdir swoole \
+    # && tar -xf swoole-4.4.3.tgz -C swoole --strip-components=1 \
+    # && ( cd swoole && phpize && ./configure --enable-openssl && make ${MC} && make install ) \
+    # && docker-php-ext-enable swoole
 fi
 
 if [ -z "${EXTENSIONS##*,pdo_sqlsrv,*}" ]; then
